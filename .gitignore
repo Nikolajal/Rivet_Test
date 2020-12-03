@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+
+*.dat
+*.pdf
+*.png
+*.yoda
+*.html
+*.so
+.DS_Store
+./rivet-plots/*
