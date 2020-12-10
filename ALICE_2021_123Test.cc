@@ -19,17 +19,17 @@ namespace Rivet {
     void init() {
         
         // Initialise and register projections
-        declare( UnstableParticles( Cuts::absrap < 0.5 ), "_AnalysisCuts");
+        declare( UnstableParticles( Cuts::absrap < 0.5 ), "AnalysisCuts");
         
         // Book histograms
-        book(_H2["_PhiMeson_Plot"], "_PhiMeson_Plot", fArrNtup, fArrMult);
+        book(_H2["PhiMeson_Plot"], "PhiMeson_Plot", fArrNtup, fArrMult);
     }
 
     /// Perform the per-event analysis
     void analyze(const Event& event) {
         
         // Phi Meson Analysis
-        const UnstableParticles &_EventParticles = apply<UnstableParticles>(event, "_AnalysisCuts");
+        const UnstableParticles &_EventParticles = apply<UnstableParticles>(event, "AnalysisCuts");
         
         int nPhi = 0;
         int nPrt = 0;
@@ -45,13 +45,13 @@ namespace Rivet {
                 ++nPrt;
             }
         }
-        _H2["_PhiMeson_Plot"]->fill(double(nPhi),nPrt);
+        _H2["PhiMeson_Plot"]->fill(double(nPhi),nPrt);
     }
 
     /// Normalise histograms etc., after the run
     void finalize() {
         
-        scale(_H2["_PhiMeson_Plot"], 1./sumW());
+        scale(_H2["PhiMeson_Plot"], 1./sumW());
 
     }
 
